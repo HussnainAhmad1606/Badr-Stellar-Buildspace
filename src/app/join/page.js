@@ -36,7 +36,7 @@ function page() {
         id="whoobe-t7qyk"
         className="justify-center items-center w-full py-10 shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/3 m-auto"
       >
-        <h2 className="text-4xl font-bold my-4 text-[#023264]">Login</h2>
+        <h2 className="text-4xl font-bold my-4 text-[#023264]">Join the Wait List</h2>
         <input type="text" value={name} onChange={e=>setName(e.target.value)} className="input" placeholder="Your Name" />
         <input type="text" value={email} onChange={e=>setEmail(e.target.value)} className="input" placeholder="Your Email" />
 

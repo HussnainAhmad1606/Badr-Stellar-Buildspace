@@ -13,7 +13,7 @@ function Navbar() {
             
             <li id='btn'><button className="pushable">
   <span className="front">
-    <Link href={"/join"}>Join Wishlist</Link>
+    <Link href={"/join"}>Join Waitlist</Link>
   </span>
 </button></li>
         </ul>

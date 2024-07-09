@@ -16,7 +16,7 @@ function page() {
        
         <button className="my-5 pushable">
           <span className="front">
-            <Link href={"/join"}>Join Wishlist</Link>
+            <Link href={"/join"}>Join Waitlist</Link>
           </span>
         </button>
       </div>
