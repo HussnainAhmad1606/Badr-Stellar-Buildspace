@@ -42,7 +42,7 @@ function page() {
 
         <button className="pushable">
           <span className="front">
-            <button onClick={subscribe}>Join Wishlist</button>
+            <button onClick={subscribe}>Join Waitlist</button>
           </span>
         </button>
       </div>
