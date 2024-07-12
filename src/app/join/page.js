@@ -4,32 +4,43 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 
 function page() {
+
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
-  const subscribe = async () => {
-    const data = {
+    const subscribe = async () => {
+      const data = {
         name: name,
         email: email
-    }
-    const req = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: {
-            "Content-Type":"application/json"
-        },
-        body: JSON.stringify(data)
-    });
-    const res = await req.json();
-    if (res.type == "success") {
-    toast.success(res.message);
-
-    }
-    else {
-    toast.error(res.message);
-
-
-    }
-
-  };
+      };
+    
+      // Function to make the API call and return a promise
+      const subscribeRequest = () => {
+        return fetch("/api/subscribe", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        }).then(async (response) => {
+          const res = await response.json();
+          if (res.type === "success") {
+            return res.message; // Resolve with success message
+          } else {
+            throw new Error(res.message); // Reject with error message
+          }
+        });
+      };
+    
+      // Use toast.promise to show the toast notifications
+      toast.promise(
+        subscribeRequest(),
+        {
+          loading: 'Subscribing...',
+          success: 'Subscribed successfully!',
+          error: 'Subscription failed.',
+        }
+      );
+    };
   return (
     <div>
       <div
