@@ -5,8 +5,9 @@ import { toast } from "react-hot-toast";
 
 function page() {
 
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
+    const [name, setName] = useState("");
+    const [msg, setMsg] = useState("");
+    const [email, setEmail] = useState("");
     const subscribe = async () => {
       const data = {
         name: name,
@@ -24,8 +25,10 @@ function page() {
         }).then(async (response) => {
           const res = await response.json();
           if (res.type === "success") {
+            setMsg(res.message)
             return res.message; // Resolve with success message
           } else {
+            setMsg(res.message)
             throw new Error(res.message); // Reject with error message
           }
         });
@@ -36,8 +39,8 @@ function page() {
         subscribeRequest(),
         {
           loading: 'Subscribing...',
-          success: 'Subscribed successfully!',
-          error: 'Subscription failed.',
+          success: `You have been added to the wishlist`,
+          error: `${msg}`,
         }
       );
     };

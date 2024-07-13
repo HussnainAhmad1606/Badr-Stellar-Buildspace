@@ -5,7 +5,7 @@ const handler = async (req, response) => {
     try {
         const existingSubscriber = await Newsletter.findOne({email: req.body.email});
         if (existingSubscriber) {
-        return response.status(500).json({type: "error", message: "You are already subscribed"});
+        return response.status(500).json({type: "success", message: "You have been added to the wishlist!"});
 
         }
         const newSubscriber = await Newsletter.create({ name: req.body.name, email: req.body.email, project: "buildspace-project"});
